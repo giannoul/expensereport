@@ -111,6 +111,7 @@ type expenseNameMapperTest struct {
 var expenseNameMapperTests = []expenseNameMapperTest{
 	{DINNER, "Dinner"},
 	{BREAKFAST, "Breakfast"},
+	{LUNCH, "Lunch"},
 	{CAR_RENTAL, "Car Rental"},
 }
 
@@ -140,6 +141,10 @@ var mealOverExpensesIdentifierTests = []mealOverExpensesIdentifierTest{
 	{Expense{BREAKFAST, 999}, " "},
 	{Expense{BREAKFAST, 1000}, " "},
 	{Expense{BREAKFAST, 1001}, "X"},
+	{Expense{LUNCH, 40}, " "},
+	{Expense{LUNCH, 999}, " "},
+	{Expense{LUNCH, 2000}, " "},
+	{Expense{LUNCH, 2001}, "X"},
 	{Expense{CAR_RENTAL, 450000}, " "},
 }
 
@@ -164,6 +169,7 @@ type expenseLineTextTest struct {
 var expenseLineTextTests = []expenseLineTextTest{
 	{"Dinner", " ", 200, "Dinner\t200\t \n"},
 	{"Breakfast", " ", 300, "Breakfast\t300\t \n"},
+	{"Lunch", " ", 360, "Lunch\t360\t \n"},
 	{"Car Rental", " ", 400, "Car Rental\t400\t \n"},
 }
 

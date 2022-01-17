@@ -11,6 +11,7 @@ const (
 	DINNER Type = iota + 1
 	BREAKFAST
 	CAR_RENTAL
+	LUNCH
 )
 
 type Expense struct {
@@ -23,7 +24,7 @@ func produceStringTitle(t string) string {
 }
 
 func isMeal(t Type) bool {
-	mealTypes := []Type{DINNER, BREAKFAST}
+	mealTypes := []Type{DINNER, BREAKFAST, LUNCH}
 	for _, m := range mealTypes {
 		if m == t {
 			return true
@@ -40,7 +41,7 @@ func mealAmountFilter(e Expense) (i int) {
 }
 
 func expenseNameMapper(i Type) (s string) {
-	names := []string{"Dinner", "Breakfast", "Car Rental"}
+	names := []string{"Dinner", "Breakfast", "Car Rental", "Lunch"}
 	return names[i-1]
 }
 
@@ -48,6 +49,7 @@ func mealOverExpensesIdentifier(e Expense) (s string) {
 	m := make(map[Type]int)
 	m[DINNER] = 5000
 	m[BREAKFAST] = 1000
+	m[LUNCH] = 2000
 	if _, ok := m[e.Type]; ok {
 		if e.Amount > m[e.Type] {
 			return "X"
