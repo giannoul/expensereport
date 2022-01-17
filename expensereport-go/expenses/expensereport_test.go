@@ -175,3 +175,47 @@ func Test_expenseLineText(t *testing.T) {
 		}
 	}
 }
+
+/*
+Test: mealExpensesLineText
+*/
+type mealExpensesLineTextTest struct {
+	arg1     int
+	expected string
+}
+
+var mealExpensesLineTextTests = []mealExpensesLineTextTest{
+	{200, "Meal expenses: 200\n"},
+	{600, "Meal expenses: 600\n"},
+}
+
+func Test_mealExpensesLineText(t *testing.T) {
+
+	for _, test := range mealExpensesLineTextTests {
+		if output := mealExpensesLineText(test.arg1); output != test.expected {
+			t.Errorf("Output %s not equal to expected %s", output, test.expected)
+		}
+	}
+}
+
+/*
+Test: totalExpensesLineText
+*/
+type totalExpensesLineTextTest struct {
+	arg1     int
+	expected string
+}
+
+var totalExpensesLineTextTests = []totalExpensesLineTextTest{
+	{100, "Total expenses: 100\n"},
+	{6500, "Total expenses: 6500\n"},
+}
+
+func Test_totalExpensesLineTextText(t *testing.T) {
+
+	for _, test := range totalExpensesLineTextTests {
+		if output := totalExpensesLineText(test.arg1); output != test.expected {
+			t.Errorf("Output %s not equal to expected %s", output, test.expected)
+		}
+	}
+}
