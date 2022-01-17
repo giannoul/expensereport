@@ -45,11 +45,34 @@ var produceStringTitleTests = []produceStringTitleTest{
 	{"2022-01-17", "Expenses 2022-01-17\n"},
 }
 
-func TestProduceStringTitle(t *testing.T) {
+func Test_produceStringTitle(t *testing.T) {
 
 	for _, test := range produceStringTitleTests {
 		if output := produceStringTitle(test.arg1); output != test.expected {
 			t.Errorf("Output %q not equal to expected %q", output, test.expected)
+		}
+	}
+}
+
+/*
+Test: isMeal
+*/
+type isMealTest struct {
+	arg1     Type
+	expected bool
+}
+
+var isMealTests = []isMealTest{
+	{DINNER, true},
+	{BREAKFAST, true},
+	{CAR_RENTAL, true},
+}
+
+func Test_isMeal(t *testing.T) {
+
+	for _, test := range isMealTests {
+		if output := isMeal(test.arg1); output != test.expected {
+			t.Errorf("Output %t not equal to expected %t for %d", output, test.expected, test.arg1)
 		}
 	}
 }
