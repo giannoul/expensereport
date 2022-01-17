@@ -32,3 +32,24 @@ func TestCharacterization(t *testing.T) {
 		t.Errorf("got %q, wanted %q", got, want)
 	}
 }
+
+/*
+Test: produceStringTitle
+*/
+type produceStringTitleTest struct {
+	arg1, expected string
+}
+
+var produceStringTitleTests = []produceStringTitleTest{
+	{"whatever", "Expenses whatever\n"},
+	{"2022-01-17", "Expenses 2022-01-17\n"},
+}
+
+func TestProduceStringTitle(t *testing.T) {
+
+	for _, test := range produceStringTitleTests {
+		if output := produceStringTitle(test.arg1); output != test.expected {
+			t.Errorf("Output %q not equal to expected %q", output, test.expected)
+		}
+	}
+}

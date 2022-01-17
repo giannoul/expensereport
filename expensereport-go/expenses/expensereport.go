@@ -18,8 +18,8 @@ type Expense struct {
 	Amount int
 }
 
-func produceStringTitle() string {
-	return fmt.Sprintf("Expenses %s\n", time.Now().Format("2006-01-02"))
+func produceStringTitle(t string) string {
+	return fmt.Sprintf("Expenses %s\n", t)
 }
 
 func isMeal(t Type) bool {
@@ -71,7 +71,7 @@ func totalExpensesLineText(total int) string {
 func printReport(expenses []Expense) {
 	var total, mealExpenses int
 
-	fmt.Printf(produceStringTitle())
+	fmt.Printf(produceStringTitle(time.Now().Format("2006-01-02")))
 
 	for _, expense := range expenses {
 		mealExpenses += mealAmountFilter(expense)
