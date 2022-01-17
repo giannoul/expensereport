@@ -76,3 +76,26 @@ func Test_isMeal(t *testing.T) {
 		}
 	}
 }
+
+/*
+Test: mealAmountFilter
+*/
+type mealAmountFilterTest struct {
+	arg1     Expense
+	expected int
+}
+
+var mealAmountFilterTests = []mealAmountFilterTest{
+	{Expense{DINNER, 20}, 20},
+	{Expense{BREAKFAST, 40}, 40},
+	{Expense{CAR_RENTAL, 30}, 0},
+}
+
+func Test_mealAmountFilter(t *testing.T) {
+
+	for _, test := range mealAmountFilterTests {
+		if output := mealAmountFilter(test.arg1); output != test.expected {
+			t.Errorf("Output %d not equal to expected %d for %d", output, test.expected, test.arg1.Type)
+		}
+	}
+}
