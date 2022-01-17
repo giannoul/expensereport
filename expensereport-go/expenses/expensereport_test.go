@@ -99,3 +99,26 @@ func Test_mealAmountFilter(t *testing.T) {
 		}
 	}
 }
+
+/*
+Test: expenseNameMapper
+*/
+type expenseNameMapperTest struct {
+	arg1     Type
+	expected string
+}
+
+var expenseNameMapperTests = []expenseNameMapperTest{
+	{DINNER, "Dinner"},
+	{BREAKFAST, "Breakfast"},
+	{CAR_RENTAL, "Car Rental"},
+}
+
+func Test_expenseNameMapper(t *testing.T) {
+
+	for _, test := range expenseNameMapperTests {
+		if output := expenseNameMapper(test.arg1); output != test.expected {
+			t.Errorf("Output %s not equal to expected %s for %d", output, test.expected, test.arg1)
+		}
+	}
+}
