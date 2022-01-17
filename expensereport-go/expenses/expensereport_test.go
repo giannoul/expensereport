@@ -65,7 +65,7 @@ type isMealTest struct {
 var isMealTests = []isMealTest{
 	{DINNER, true},
 	{BREAKFAST, true},
-	{CAR_RENTAL, true},
+	{CAR_RENTAL, false},
 }
 
 func Test_isMeal(t *testing.T) {
