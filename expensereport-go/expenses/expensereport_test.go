@@ -122,3 +122,32 @@ func Test_expenseNameMapper(t *testing.T) {
 		}
 	}
 }
+
+/*
+Test: mealOverExpensesIdentifier
+*/
+type mealOverExpensesIdentifierTest struct {
+	arg1     Expense
+	expected string
+}
+
+var mealOverExpensesIdentifierTests = []mealOverExpensesIdentifierTest{
+	{Expense{DINNER, 20}, " "},
+	{Expense{DINNER, 2000}, " "},
+	{Expense{DINNER, 5000}, " "},
+	{Expense{DINNER, 5001}, "X"},
+	{Expense{BREAKFAST, 40}, " "},
+	{Expense{BREAKFAST, 999}, " "},
+	{Expense{BREAKFAST, 1000}, " "},
+	{Expense{BREAKFAST, 1001}, "X"},
+	{Expense{CAR_RENTAL, 450000}, " "},
+}
+
+func Test_mealOverExpensesIdentifier(t *testing.T) {
+
+	for _, test := range mealOverExpensesIdentifierTests {
+		if output := mealOverExpensesIdentifier(test.arg1); output != test.expected {
+			t.Errorf("Output %s not equal to expected %s for %d", output, test.expected, test.arg1)
+		}
+	}
+}
