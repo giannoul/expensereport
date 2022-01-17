@@ -151,3 +151,27 @@ func Test_mealOverExpensesIdentifier(t *testing.T) {
 		}
 	}
 }
+
+/*
+Test: expenseLineText
+*/
+type expenseLineTextTest struct {
+	arg1, arg2 string
+	arg3       int
+	expected   string
+}
+
+var expenseLineTextTests = []expenseLineTextTest{
+	{"Dinner", " ", 200, "Dinner\t200\t \n"},
+	{"Breakfast", " ", 300, "Breakfast\t300\t \n"},
+	{"Car Rental", " ", 400, "Car Rental\t400\t \n"},
+}
+
+func Test_expenseLineText(t *testing.T) {
+
+	for _, test := range expenseLineTextTests {
+		if output := expenseLineText(test.arg1, test.arg2, test.arg3); output != test.expected {
+			t.Errorf("Output %s not equal to expected %s", output, test.expected)
+		}
+	}
+}
